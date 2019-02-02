@@ -6,3 +6,26 @@ body{
     margin: 0;
     padding:0;
 }
+
+.grid-container{
+    display: grid;
+    display: -ms-grid;
+    height: 560px;
+    justify-content: center;
+    align-items: center;
+
+    .login-card{
+        width: 500px;
+
+        .login-btn{
+            margin: 15px 15px 15px 0;
+            float: right;
+            background-color: 'accent';
+            &:focus{
+                outline: 0;
+            }
+        }
+    }
+
+}
+

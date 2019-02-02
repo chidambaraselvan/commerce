@@ -10,6 +10,7 @@ import { HeaderComponent } from './backend/header/header.component';
 import { LoginComponent } from './backend/login/login.component';
 import { SignupComponent } from './backend/signup/signup.component';
 import { HomeComponent } from './backend/home/home.component';
+import { UserService } from './shared/user.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { HomeComponent } from './backend/home/home.component';
     MatCardModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
