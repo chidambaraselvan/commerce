@@ -1,13 +1,24 @@
 <mat-toolbar color="primary">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2">
-        <span>Commerce</span>
+      <div class="col-3">
+        <div class="row">
+          <div class="col-6" *ngIf ="show">
+            <a routerLink="/" routerLinkActive="active" class="focus">
+              <h1>Commerce</h1>
+            </a>
+          </div>
+          <div class="col-6" *ngIf ="!show">
+            <button mat-button (click)="toggle()" class="focus">
+              <mat-icon mat-list-icon>view_headline</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="col-10 text-right">
+      <div class="col-9 text-right">
         <!-- This fills the remaining space of the current row -->
-        <button mat-button routerLink="/login">Login</button>
-        <button mat-button routerLink="/signup">Sign up</button>
+        <button mat-button routerLink="/login" routerLinkActive="active" class="focus">Login</button>
+        <button mat-button routerLink="/signup" routerLinkActive="active" class="focus">Sign up</button>
       </div>
     </div>
   </div>

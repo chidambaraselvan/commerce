@@ -29,3 +29,14 @@ body{
 
 }
 
+.focus{
+    color: #fff;
+    &:focus{
+        outline: 0;
+    }
+    &:hover{
+        color: #fff;
+        text-decoration: none;
+    }
+}
+

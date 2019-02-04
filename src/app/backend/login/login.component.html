@@ -6,12 +6,15 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form >
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="col-12">
-          <input matInput placeholder="Email" type="email">
+          <input matInput placeholder="Email" type="email" formControlName="email">
+          <mat-error *ngIf="loginForm.hasError('required','email')">Your email is required</mat-error>
+          <mat-error *ngIf="loginForm.hasError('email','email')">Please enter valid email</mat-error>
         </mat-form-field>
         <mat-form-field class="col-12">
-            <input matInput placeholder="Password" type="password">
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-error *ngIf="loginForm.hasError('required','password')">Your password is required</mat-error>
         </mat-form-field>
         <button mat-raised-button class="login-btn">Login</button>
       </form>
