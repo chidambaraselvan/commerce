@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from 'src/app/shared/dashboard.service';
 
 @Component({
   selector: 'app-home',
@@ -6,14 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  dashboardData:{}
+  height:string
   show:boolean
-  constructor() {
+  constructor(public dashboard:DashboardService) {
     
    }
 
   ngOnInit() {
-    const user= JSON.parse(sessionStorage.getItem("user"));
-    this.show = user != null ? false: true
+    this.dashboard.getdata().then((res)=>{
+      this.dashboardData = res
+      console.log(this.dashboardData)
+    })
+    this.height = (window.innerHeight - 64).toString()+'px';
   }
 
 }

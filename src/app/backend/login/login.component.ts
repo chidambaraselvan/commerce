@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,16 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
   error:string ="";
+  user:any
 
-  constructor(public fb: FormBuilder, public userService: UserService,private router:Router) { }
+  constructor(public fb: FormBuilder, public userService: UserService,public router:Router, public data:DataService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+    this.data.currentData.subscribe(user=>this.user = user)
   }
 
   onSubmit(){
@@ -27,15 +30,15 @@ export class LoginComponent implements OnInit {
       return
     }else{
       this.userService.loginUser(this.loginForm.value).then((res)=>{
-        console.log(res);
         if(res == "Password not Match"){
           this.error = "Incorrect Password"
         }else if(res == "Email not Registered"){
           this.error = "Enter Registered Email Address"
         }else{
-          this.loginForm.reset();
-          sessionStorage.setItem("user",JSON.stringify(res));
-          this.router.navigate(["/"]);
+          sessionStorage.setItem("user",JSON.stringify(res))
+          this.loginForm.reset()
+          this.data.changeData(JSON.stringify(res))
+          this.router.navigate(["/"])
         }
       }).catch((err)=>{
         console.log(err.error);

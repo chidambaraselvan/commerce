@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MatSidenav } from '@angular/material';
+import { DataService } from 'src/app/shared/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,15 +21,22 @@ import { MatSidenav } from '@angular/material';
   ]
 })
 export class SidebarComponent implements OnInit {
-  show:boolean
+  user: any
+  show: boolean
   @ViewChild(MatSidenav) sidenav: MatSidenav
 
-  constructor() { }
+  constructor(public data: DataService, public router: Router) {
+    this.data.currentData.subscribe(user =>{ 
+      this.user = user
+      console.log(this.user);
+      this.show = (this.user != null) ? true : false
+    })
+  }
 
   ngOnInit() {
-    const user= JSON.parse(sessionStorage.getItem("user"));
-    this.show = user != null ? false: true
+
   }
+
   message: any;
   isExpanded = true;
   animating = false;
@@ -48,5 +57,11 @@ export class SidebarComponent implements OnInit {
   receiveMessage($event: any) {
     this.message = $event
     this.sidenav.toggle();
+  }
+
+  logout() {
+    sessionStorage.removeItem("user");
+    this.data.changeData(sessionStorage.getItem("user"))
+    this.router.navigate(['/login']);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-header',
@@ -6,14 +7,22 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  user:any
   message: string = "toggle"
+  name:string
   show:boolean
   @Output() messageEvent = new EventEmitter<string>();
-  constructor() { }
+  constructor(public data:DataService) { }
 
   ngOnInit() {
-    const user= JSON.parse(sessionStorage.getItem("user"));
-    this.show = user != null ? false: true
+    this.data.currentData.subscribe(user=>{ 
+      this.user = user;
+      this.show = this.user != null ? true: false
+      if(this.user != null){
+        this.user =JSON.parse(this.user)
+        this.name = this.user.Name.toLowerCase().charAt(0).toUpperCase() + this.user.Name.toLowerCase().substr(1);
+      }
+    })
   }
 
   toggle(){

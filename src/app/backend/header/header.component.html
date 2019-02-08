@@ -3,22 +3,26 @@
     <div class="row">
       <div class="col-3">
         <div class="row">
-          <div class="col-6" *ngIf ="show">
+          <div class="col-6 p-0" *ngIf ="!show">
             <a routerLink="/" routerLinkActive="active" class="focus">
               <h1>Commerce</h1>
             </a>
           </div>
-          <div class="col-6" *ngIf ="!show">
+          <div class="col-6 p-0" *ngIf ="show">
             <button mat-button (click)="toggle()" class="focus">
-              <mat-icon mat-list-icon>view_headline</mat-icon>
+              <mat-icon mat-list-icon>menu</mat-icon>
             </button>
           </div>
         </div>
       </div>
       <div class="col-9 text-right">
         <!-- This fills the remaining space of the current row -->
-        <button mat-button routerLink="/login" routerLinkActive="active" class="focus">Login</button>
-        <button mat-button routerLink="/signup" routerLinkActive="active" class="focus">Sign up</button>
+        <button *ngIf ="!show" mat-button routerLink="/login" routerLinkActive="active" class="focus">Login</button>
+        <button *ngIf ="!show" mat-button routerLink="/signup" routerLinkActive="active" class="focus">Sign up</button>
+        <mat-icon *ngIf ="show" matBadge="15+" matBadgeColor="accent" matBadgeSize="small" style="position:relative;top:5px;right: 12px">notification_important</mat-icon>
+        <mat-icon *ngIf ="show" matBadge="5+" matBadgeColor="accent" matBadgeSize="small" style="position:relative;top:5px;">email</mat-icon>
+        <button *ngIf ="show" mat-button routerLink="/signup" routerLinkActive="active" class="focus">{{name}}</button>
+        <mat-icon *ngIf ="show" style="position:relative;top:5px;">account_circle</mat-icon>
       </div>
     </div>
   </div>
