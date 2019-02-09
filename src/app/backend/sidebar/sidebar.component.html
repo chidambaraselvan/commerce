@@ -4,24 +4,24 @@
         <h1 style="font-size:26px;padding: 15px;">Commerce</h1>
       </a>
       <a routerLink="/" routerLinkActive="active" class="focus" *ngIf="!isExpanded" style="color:black;text-align: center;font-size: 26px;display: block;padding: 15px;">
-        <mat-icon mat-list-icon>shop</mat-icon>
+        <mat-icon mat-list-icon>store</mat-icon>
       </a>
       <mat-nav-list class="nav-menu" [@sidenavAnimationIsExpanded]="isExpanded" (@sidenavAnimationIsExpanded.start)="start()" (@sidenavAnimationIsExpanded.done)="done()">
           <mat-list-item routerLink="/">
             <mat-icon mat-list-icon>dashboard</mat-icon>
-            <p matLine *ngIf="isExpanded">Dashboard</p>
+            <p matLine *ngIf="isExpanded" class="font">Dashboard</p>
           </mat-list-item>
           <mat-list-item >
             <mat-icon mat-list-icon>supervisor_account</mat-icon>
-            <p matLine *ngIf="isExpanded">Users</p>
+            <p matLine *ngIf="isExpanded" class="font">Users</p>
           </mat-list-item>
           <mat-list-item routerLink="/product">
-            <mat-icon mat-list-icon>shop</mat-icon>
-            <p matLine *ngIf="isExpanded">Products</p>
+            <mat-icon mat-list-icon>shop_two</mat-icon>
+            <p matLine *ngIf="isExpanded" class="font">Products</p>
           </mat-list-item>
           <mat-list-item >
             <mat-icon mat-list-icon>exit_to_app</mat-icon>
-            <p matLine *ngIf="isExpanded" (click)="logout()">Log Out</p>
+            <p matLine *ngIf="isExpanded" (click)="logout()" class="font">Log Out</p>
           </mat-list-item>
           <mat-list-item style="position:absolute;bottom:0" (click)="isExpanded = !isExpanded">
             <mat-icon *ngIf="!isExpanded">chevron_right</mat-icon>

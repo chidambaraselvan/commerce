@@ -4,5 +4,5 @@ export class Product {
     Price: number;
     Image: string;
     Description: string;
-    DateCreated: Date;
+    DateCreated: string;
 }

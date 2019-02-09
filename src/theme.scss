@@ -3,7 +3,7 @@
 @include mat-core();
 
 $commerce-app-primary: mat-palette($mat-indigo);
-$commerce-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$commerce-app-accent:  mat-palette($mat-indigo,200);
 $commerce-app-warn:    mat-palette($mat-red);
 $commerce-app-theme:   mat-light-theme($commerce-app-primary, $commerce-app-accent, $commerce-app-warn);
 

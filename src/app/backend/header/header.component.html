@@ -15,13 +15,13 @@
           </div>
         </div>
       </div>
-      <div class="col-9 text-right">
+      <div class="col-9 text-right font">
         <!-- This fills the remaining space of the current row -->
-        <button *ngIf ="!show" mat-button routerLink="/login" routerLinkActive="active" class="focus">Login</button>
-        <button *ngIf ="!show" mat-button routerLink="/signup" routerLinkActive="active" class="focus">Sign up</button>
-        <mat-icon *ngIf ="show" matBadge="15+" matBadgeColor="accent" matBadgeSize="small" style="position:relative;top:5px;right: 12px">notification_important</mat-icon>
-        <mat-icon *ngIf ="show" matBadge="5+" matBadgeColor="accent" matBadgeSize="small" style="position:relative;top:5px;">email</mat-icon>
-        <button *ngIf ="show" mat-button routerLink="/signup" routerLinkActive="active" class="focus">{{name}}</button>
+        <button *ngIf ="!show" mat-button routerLink="/login" routerLinkActive="active" class="focus font">Login</button>
+        <button *ngIf ="!show" mat-button routerLink="/signup" routerLinkActive="active" class="focus font">Sign up</button>
+        <mat-icon *ngIf ="show" matBadge="15+" matBadgeColor="warn" matBadgeSize="small" style="position:relative;top:5px;right: 12px">notification_important</mat-icon>
+        <mat-icon *ngIf ="show" matBadge="5+" matBadgeColor="warn" matBadgeSize="small" style="position:relative;top:5px;">email</mat-icon>
+        <button *ngIf ="show" mat-button class="focus font">{{name}}</button>
         <mat-icon *ngIf ="show" style="position:relative;top:5px;">account_circle</mat-icon>
       </div>
     </div>
