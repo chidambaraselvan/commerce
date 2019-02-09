@@ -4,6 +4,7 @@ import { LoginComponent } from './backend/login/login.component';
 import { SignupComponent } from './backend/signup/signup.component';
 import { HomeComponent } from './backend/home/home.component';
 import { AuthguardService as authGuard } from './shared/guards/authguard.service';
+import { ProductComponent } from './backend/product/product.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'product', component: ProductComponent }
 ];
 
 @NgModule({

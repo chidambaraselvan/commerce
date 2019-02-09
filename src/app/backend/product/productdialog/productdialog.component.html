@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content style="padding-bottom:15px;">
+  <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="col-12 p-0">
+      <input matInput placeholder="Name" type="text" formControlName="name">
+      <mat-error *ngIf="addProductForm.hasError('required','name')">Product name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12 p-0">
+      <input matInput placeholder="Price" type="text" formControlName="price">
+      <mat-error *ngIf="addProductForm.hasError('required','price')">Product price is required</mat-error>
+    </mat-form-field>
+    <div class="col-12 p-0">
+      <input (change)="upload($event)" placeholder="Upload product image" type="file" id="file" formControlName="image">
+      <mat-error *ngIf="addProductForm.hasError('required','image')&& addProductForm.dirty">Upload a product image</mat-error>
+    </div>
+    <mat-form-field class="col-12 p-0">
+      <textarea matInput placeholder="Description" formControlName="desc"></textarea>
+    </mat-form-field>
+    <p *ngIf="success">Product Created Successfully</p>
+    <p *ngIf="error!=''">{{error}}</p>
+    <div class="text-right">
+      <button mat-button mat-dialog-close style="margin-right:10px">Cancel</button>
+      <button mat-raised-button class="create-btn" color="primary">Create</button>
+    </div>
+  </form>
+</div>
