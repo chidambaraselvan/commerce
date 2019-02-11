@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule,MatMenuModule,MatButtonModule,MatCardModule, MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatBadgeModule,MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
+import { MatToolbarModule,MatMenuModule,MatButtonModule,MatCardModule, MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatBadgeModule,MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './backend/header/header.component';
@@ -48,7 +48,8 @@ import { ProductdialogComponent } from './backend/product/productdialog/productd
     MatSortModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     ProductdialogComponent

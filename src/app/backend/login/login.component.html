@@ -16,7 +16,11 @@
           <input matInput placeholder="Password" type="password" formControlName="password">
           <mat-error *ngIf="loginForm.hasError('required','password')">Your password is required</mat-error>
         </mat-form-field>
-        <button mat-raised-button class="login-btn">Login</button>
+        <div class="text-right">
+          <mat-spinner *ngIf="spinnerShow" class="spinner" [diameter]=25 [color]="accent" [mode]="indeterminate">
+          </mat-spinner>
+          <button mat-raised-button class="login-btn">Login</button>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>

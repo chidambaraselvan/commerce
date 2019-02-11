@@ -18,10 +18,15 @@ body{
     .login-card{
         width: 500px;
 
+        
+        .spinner{
+            margin: 20px 15px 20px 0;
+            display: inline-block;
+        }
+
         .login-btn{
             margin: 15px 15px 15px 0;
             float: right;
-            background-color: 'accent';
             &:focus{
                 outline: 0;
             }

@@ -15,9 +15,9 @@
       </mat-error>
     </div>
     <div *ngIf="data.title=='Update Product'" class="col-12 p-0">
-      <input style="padding:15px 0;" *ngIf="data.product.Image ==''" (change)="upload($event)" placeholder="Upload product image" type="file"
+      <input style="padding:15px 0;" *ngIf="data.title=='Update Product' && data.product.Image ==''" (change)="upload($event)" placeholder="Upload product image" type="file"
         id="file" formControlName="image">
-      <div style="display:inline-block;position: relative;padding: 20px 0;" *ngIf="data.product.Image !=''">
+      <div style="display:inline-block;position: relative;padding: 20px 0;" *ngIf="data.title=='Update Product' && data.product.Image !=''">
         <button style="position:absolute;top:0px;right:-16px;" mat-mini-fab color="primary" (click)="removeImage()">
           x
         </button>

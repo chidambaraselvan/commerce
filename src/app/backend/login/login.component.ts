@@ -14,10 +14,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   error:string ="";
   user:any
+  spinnerShow:boolean
 
   constructor(public fb: FormBuilder, public userService: UserService,public router:Router, public data:DataService) { }
 
   ngOnInit() {
+    this.spinnerShow=false;
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -29,12 +31,14 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){
       return
     }else{
+      this.spinnerShow= true;
       this.userService.loginUser(this.loginForm.value).then((res)=>{
         if(res == "Password not Match"){
           this.error = "Incorrect Password"
         }else if(res == "Email not Registered"){
           this.error = "Enter Registered Email Address"
         }else{
+          this.spinnerShow= false;
           sessionStorage.setItem("user",JSON.stringify(res))
           this.loginForm.reset()
           this.data.changeData(JSON.stringify(res))

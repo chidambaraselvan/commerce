@@ -11,7 +11,7 @@ import { ProductdialogComponent } from './productdialog/productdialog.component'
 })
 export class ProductComponent implements OnInit {
   height: string
-  data:any[]
+  data: any[]
   displayedColumns: string[] = ['select', 'Name', 'Price', 'Image', 'DateCreated', 'Actions'];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
@@ -38,7 +38,7 @@ export class ProductComponent implements OnInit {
       this.dataSource.data = this.dataSource.data.filter(x =>
         x.Name.trim().toLowerCase().includes(filterValue.trim().toLowerCase()) || x.Price.toString().includes(filterValue.trim().toLowerCase())
       );
-    }else{
+    } else {
       this.dataSource.data = this.data
     }
   }
@@ -58,7 +58,15 @@ export class ProductComponent implements OnInit {
   dialogOpen() {
     const dialogRef = this.dialog.open(ProductdialogComponent, {
       data: {
-        title: "Create Product"
+        title: "Create Product",
+        product: {
+          ProductId: "",
+          Name: "",
+          Price: "",
+          Image: "",
+          Description: "",
+          DateCreated: ""
+        }
       }
     })
     dialogRef.afterClosed().subscribe(() => {
@@ -66,12 +74,12 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  edit(ind:number){
-    console.log(this.dataSource.data[ind]);
+  edit(singleProduct: any) {
+    console.log(singleProduct);
     const dialogRef = this.dialog.open(ProductdialogComponent, {
       data: {
         title: "Update Product",
-        product:this.dataSource.data[ind]
+        product: singleProduct
       }
     })
     dialogRef.afterClosed().subscribe(() => {
@@ -79,8 +87,8 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  delete(id:number){
-    this.product.deleteProduct(id).subscribe((data)=>{
+  delete(id: number) {
+    this.product.deleteProduct(id).subscribe((data) => {
       console.log(data);
       let snackBarRef = this.snackBar.open("Product deleted Successfully");
       snackBarRef.afterDismissed().subscribe(() => {

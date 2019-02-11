@@ -1,6 +1,6 @@
 <mat-sidenav-container autosize>
   <mat-sidenav #sidenav mode="side" *ngIf="show" opened>
-      <a routerLink="/" routerLinkActive="active" class="focus" *ngIf="isExpanded" style="color:black;text-align: center;font-size: 26px;">
+      <a routerLink="/" routerLinkActive="active" class="focus font" *ngIf="isExpanded" style="color:black;text-align: center;font-size: 26px;">
         <h1 style="font-size:26px;padding: 15px;">Commerce</h1>
       </a>
       <a routerLink="/" routerLinkActive="active" class="focus" *ngIf="!isExpanded" style="color:black;text-align: center;font-size: 26px;display: block;padding: 15px;">
@@ -19,9 +19,9 @@
             <mat-icon mat-list-icon>shop_two</mat-icon>
             <p matLine *ngIf="isExpanded" class="font">Products</p>
           </mat-list-item>
-          <mat-list-item >
+          <mat-list-item (click)="logout()">
             <mat-icon mat-list-icon>exit_to_app</mat-icon>
-            <p matLine *ngIf="isExpanded" (click)="logout()" class="font">Log Out</p>
+            <p matLine *ngIf="isExpanded" class="font">Log Out</p>
           </mat-list-item>
           <mat-list-item style="position:absolute;bottom:0" (click)="isExpanded = !isExpanded">
             <mat-icon *ngIf="!isExpanded">chevron_right</mat-icon>
