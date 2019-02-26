@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
     
   }
 
-  onSubmit(value:any) {
+  onSubmit() {
 
     if (this.signupForm.invalid) {
       return;

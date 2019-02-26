@@ -7,7 +7,7 @@ import { DashboardService } from 'src/app/shared/dashboard.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  dashboardData:{}
+  dashboardData:any
   height:string
   show:boolean
   constructor(public dashboard:DashboardService) {
