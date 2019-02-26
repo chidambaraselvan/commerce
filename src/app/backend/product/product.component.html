@@ -25,6 +25,13 @@
               </mat-checkbox>
             </td>
           </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Sno">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="font"> SNO </th>
+            <td mat-cell *matCellDef="let product;let i = index"  class="font"> {{i+1}} </td>
+          </ng-container>
+
           <!-- Name Column -->
           <ng-container matColumnDef="Name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header  class="font"> Name </th>

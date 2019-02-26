@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog, MatSnackBar, MatSort } from '@angular/material';
 import { ProductService } from 'src/app/shared/product.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ProductdialogComponent } from './productdialog/productdialog.component';
@@ -12,11 +12,12 @@ import { ProductdialogComponent } from './productdialog/productdialog.component'
 export class ProductComponent implements OnInit {
   height: string
   data: any[]
-  displayedColumns: string[] = ['select', 'Name', 'Price', 'Image', 'DateCreated', 'Actions'];
+  displayedColumns: string[] = ['select','Sno', 'Name', 'Price', 'Image', 'DateCreated', 'Actions'];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private product: ProductService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
@@ -26,8 +27,9 @@ export class ProductComponent implements OnInit {
       this.product.getProducts().subscribe(
         (data: any[]) => {
           this.data = data;
-          this.dataSource.paginator = this.paginator
-          this.dataSource.data = this.data
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.data = this.data;
+          this.dataSource.sort = this.sort;
         }
       )
     })
