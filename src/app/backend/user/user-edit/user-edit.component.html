@@ -1,0 +1,54 @@
+<div class="grid-container">
+  <mat-card class="login-card">
+    <mat-card-header class="text-center">
+      <mat-card-title>
+        EDIT DETAILS
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Full Name" type="text" formControlName="name">
+          <mat-error *ngIf="editForm.hasError('required','name')">Your name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Email" type="email" formControlName="email">
+          <mat-error *ngIf="editForm.hasError('required','email')">Your email is required</mat-error>
+          <mat-error *ngIf="editForm.hasError('email','email')">Please enter valid email</mat-error>
+        </mat-form-field>
+        <div class="col-12" style="margin-bottom:1.25em;">
+          <div *ngIf="imageFile ==null" class="file-wrapper text-center" draggable="true" (drop)="onDrop($event)" (dragenter)="dragEnter($event)"
+            (dragleave)="dragLeave($event)" (dragover)="dragOver($event)">
+            <input placeholder="Upload" type="file" #uploader (change)="onDrop($event)">
+            <mat-icon>cloud_upload</mat-icon>
+            <p>Drag & Drop Image Here or <button mat-raised-button type="button" color="accent" class="font focus-1"
+                (click)="uploader.click()">Browse</button></p>
+          </div>
+          <div class="row" *ngIf="imageFile !=null">
+            <div class="col-4">
+              <img src={{imageFile}} alt="Profile Image" class="img-fluid">
+            </div>
+            <div class="col-2">
+              <button mat-raised-button type="button" color="accent" (click)="remove()">Change</button>
+            </div>
+          </div>
+        </div>
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-error *ngIf="editForm.hasError('required','password')">Your password is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-select formControlName="UserType">
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="User">User</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p *ngIf="success">Updated Successfully</p>
+        <p *ngIf="error!=''">{{error}}</p>
+
+        <button mat-raised-button color="primary" class="login-btn">SAVE</button>
+        <button mat-button type="button" color="accent" class="login-btn" (click)="goBack()">CANCEL</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

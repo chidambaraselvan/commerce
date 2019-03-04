@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule,MatMenuModule,MatButtonModule,MatCardModule, MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatBadgeModule,MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule } from '@angular/material';
+import { MatToolbarModule,MatMenuModule,MatButtonModule,MatCardModule, MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatBadgeModule,MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule, MatSelectModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './backend/header/header.component';
@@ -15,6 +15,10 @@ import { HomeComponent } from './backend/home/home.component';
 import { SidebarComponent } from './backend/sidebar/sidebar.component';
 import { ProductComponent } from './backend/product/product.component';
 import { ProductdialogComponent } from './backend/product/productdialog/productdialog.component';
+import { UserComponent } from './backend/user/user.component';
+import { UserDetailComponent } from './backend/user/user-detail/user-detail.component';
+import { UserEditComponent } from './backend/user/user-edit/user-edit.component';
+import { UserAddComponent } from './backend/user/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { ProductdialogComponent } from './backend/product/productdialog/productd
     HomeComponent,
     SidebarComponent,
     ProductComponent,
-    ProductdialogComponent
+    ProductdialogComponent,
+    UserComponent,
+    UserDetailComponent,
+    UserEditComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +57,8 @@ import { ProductdialogComponent } from './backend/product/productdialog/productd
     MatCheckboxModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule
   ],
   entryComponents: [
     ProductdialogComponent

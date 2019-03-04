@@ -22,7 +22,8 @@
         <mat-icon *ngIf ="show" matBadge="15+" matBadgeColor="warn" matBadgeSize="small" style="position:relative;top:5px;right: 12px">notification_important</mat-icon>
         <mat-icon *ngIf ="show" matBadge="5+" matBadgeColor="warn" matBadgeSize="small" style="position:relative;top:5px;">email</mat-icon>
         <button *ngIf ="show" mat-button class="focus font">{{name}}</button>
-        <mat-icon *ngIf ="show" style="position:relative;top:5px;">account_circle</mat-icon>
+        <mat-icon *ngIf ="show==true && user.UserImg==null" style="position:relative;top:5px;">account_circle</mat-icon>
+        <div *ngIf="show==true && user.UserImg != null" class="img-fluid user-img" style="position:relative;top:5px;display: inline-block;" [ngStyle]="{'background-image':'url('+user.UserImg+')'}"></div>
       </div>
     </div>
   </div>
