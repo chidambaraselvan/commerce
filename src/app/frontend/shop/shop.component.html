@@ -1,0 +1,12 @@
+<div class="slider">
+  <ul #slider>
+    <li #sliderChildren *ngFor="let item of images" class="sliderList">
+      <img [src]="item.src" alt="Slide" class="img-fluid">
+    </li>   
+  </ul>
+  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+  <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  <div class="slider-nav">
+    <span #nav class="dot" *ngFor="let item of images; let i = index" (click)="currentSlide(i)"></span> 
+  </div>
+</div>

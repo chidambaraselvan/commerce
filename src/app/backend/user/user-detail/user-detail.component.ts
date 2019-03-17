@@ -27,10 +27,13 @@ export class UserDetailComponent implements OnInit {
             return x.UserId == this.editUser.UserId
           })
           this.userDetail = singleUser[0];
-          console.log(this.userData);
         }
       })
     })
+  }
+
+  chooseEdit(e:any){
+    this.editUser = null
   }
 
   edit(user: User) {

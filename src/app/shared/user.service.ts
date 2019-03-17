@@ -23,13 +23,13 @@ export class UserService {
     return this.http.get('http://localhost:52253/api/User').toPromise()
   }
 
-  createUser(value:any,image?:string){
+  createUser(value:any,image?:string,userType?:string){
     const data:User ={
       UserId:0,
       Name:value.name,
       Email:value.email,
       Password:value.passwords != undefined ? value.passwords.password: value.password,
-      UserType:"Admin",
+      UserType: userType,
       UserImg: image !=="" ? image:null
     }
     return this.http.post("http://localhost:52253/api/User",data).toPromise()

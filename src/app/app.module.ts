@@ -19,6 +19,7 @@ import { UserComponent } from './backend/user/user.component';
 import { UserDetailComponent } from './backend/user/user-detail/user-detail.component';
 import { UserEditComponent } from './backend/user/user-edit/user-edit.component';
 import { UserAddComponent } from './backend/user/user-add/user-add.component';
+import { ShopComponent } from './frontend/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserAddComponent } from './backend/user/user-add/user-add.component';
     UserComponent,
     UserDetailComponent,
     UserEditComponent,
-    UserAddComponent
+    UserAddComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,

@@ -61,7 +61,7 @@ export class UserAddComponent implements OnInit {
 
   onSubmit() {
     console.log(this.editForm.value);
-    this.userService.createUser(this.editForm.value,this.imageFile).then((res)=>{
+    this.userService.createUser(this.editForm.value,this.imageFile,this.editForm.controls['UserType'].value).then((res)=>{
       console.log(res)
       let snackBarRef = this.snackBar.open("User created Successfully");
       snackBarRef.afterDismissed().subscribe(() => {

@@ -21,8 +21,9 @@
         <button *ngIf ="!show" mat-button routerLink="/signup" routerLinkActive="active" class="focus font">Sign up</button>
         <mat-icon *ngIf ="show" matBadge="15+" matBadgeColor="warn" matBadgeSize="small" style="position:relative;top:5px;right: 12px">notification_important</mat-icon>
         <mat-icon *ngIf ="show" matBadge="5+" matBadgeColor="warn" matBadgeSize="small" style="position:relative;top:5px;">email</mat-icon>
+        <button mat-raised-button color="accent" matBadge="0" matBadgeColor="warn" matBadgeSize="medium" class="focus font" style="margin-right: 15px;">Cart <mat-icon>shopping_cart</mat-icon></button>
         <button *ngIf ="show" mat-button class="focus font">{{name}}</button>
-        <mat-icon *ngIf ="show==true && user.UserImg==null" style="position:relative;top:5px;">account_circle</mat-icon>
+        <mat-icon *ngIf ="user==null" style="position:relative;top:5px;">account_circle</mat-icon>
         <div *ngIf="show==true && user.UserImg != null" class="img-fluid user-img" style="position:relative;top:5px;display: inline-block;" [ngStyle]="{'background-image':'url('+user.UserImg+')'}"></div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
 import { User } from 'src/app/shared/user.model';
@@ -10,10 +10,11 @@ import { DataService } from 'src/app/shared/data.service';
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.scss']
 })
-export class UserEditComponent implements OnInit{
+export class UserEditComponent implements OnInit,OnDestroy{
   editForm: FormGroup
   imageFile: string = null
   @Input() editUserDetail: User
+  @Output() chooseComp = new EventEmitter<boolean>();
   constructor(public fb: FormBuilder, public userService: UserService, private snackBar: MatSnackBar, public data: DataService) { }
 
   ngOnInit() {
@@ -54,6 +55,7 @@ export class UserEditComponent implements OnInit{
   }
 
   goBack() {
+    this.chooseComp.emit(false);
     this.userService.changeView(false);
   }
 
@@ -68,6 +70,7 @@ export class UserEditComponent implements OnInit{
       let snackBarRef = this.snackBar.open("User Details updated Successfully");
       snackBarRef.afterDismissed().subscribe(() => {
         this.userService.currentUserViewChange(true)
+        this.chooseComp.emit(false);
         const user = JSON.parse(sessionStorage.getItem('user'));
         if(user.UserId == this.editUserDetail.UserId){
           const data:User ={
@@ -83,5 +86,9 @@ export class UserEditComponent implements OnInit{
         }
       })
     })
+  }
+
+  ngOnDestroy(){
+    this.chooseComp.emit(false);
   }
 }

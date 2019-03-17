@@ -11,16 +11,22 @@ export class AuthguardService  implements CanActivate {
   user:any
   constructor(private router: Router,public data:DataService) { }
 
-  isAuthenticated (){
-    this.data.currentData.subscribe(user => this.user = user)
-    if(this.user !== null){
+  isAuthenticated (allowedRoles: string[]){
+    this.data.currentData.subscribe(user => this.user = JSON.parse(user))
+    if (this.user!=null && (allowedRoles == null || allowedRoles.length === 0)) {
+      return true;
+    }
+
+    if(this.user!=null && allowedRoles.includes(this.user.UserType)){
       return true
     }
+    
     return false
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean{
-    if(this.isAuthenticated()){
+    const allowedRoles = next.data.allowedRoles;
+    if(this.isAuthenticated(allowedRoles)){
       return true
     }
     this.router.navigate(['/login']);

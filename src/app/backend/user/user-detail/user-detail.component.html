@@ -27,5 +27,5 @@
     </mat-card>
   </div>
 </div>
-<app-user-edit *ngIf="show !=false&& editUser!=null" [editUserDetail]="editUser"></app-user-edit>
+<app-user-edit (chooseComp)="chooseEdit($event)" *ngIf="show !=false&& editUser!=null" [editUserDetail]="editUser"></app-user-edit>
 <app-user-add *ngIf="show !=false"></app-user-add>
