@@ -20,6 +20,7 @@ import { UserDetailComponent } from './backend/user/user-detail/user-detail.comp
 import { UserEditComponent } from './backend/user/user-edit/user-edit.component';
 import { UserAddComponent } from './backend/user/user-add/user-add.component';
 import { ShopComponent } from './frontend/shop/shop.component';
+import { SliderComponent } from './frontend/shop/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ShopComponent } from './frontend/shop/shop.component';
     UserDetailComponent,
     UserEditComponent,
     UserAddComponent,
-    ShopComponent
+    ShopComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

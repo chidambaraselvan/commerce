@@ -1,12 +1,35 @@
-<div class="slider">
-  <ul #slider>
-    <li #sliderChildren *ngFor="let item of images" class="sliderList">
-      <img [src]="item.src" alt="Slide" class="img-fluid">
-    </li>   
-  </ul>
-  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-  <a class="next" (click)="plusSlides(1)">&#10095;</a>
-  <div class="slider-nav">
-    <span #nav class="dot" *ngFor="let item of images; let i = index" (click)="currentSlide(i)"></span> 
+<app-slider></app-slider>
+<section class="product">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mat-elevation-z1">
+        <div class="product-heading">
+          <h1 class="font">Products</h1>
+        </div>
+        <div class="grid">
+          <div class="h-100" *ngFor="let product of products | slice:0:4; let i=index">
+              <mat-card class="product-card text-center h-100">
+                  
+                  <img mat-card-image src={{product.Image}} alt="Photo of a Shiba Inu">
+                  <mat-card-content>
+                    <p>
+                      {{product.Name}}
+                    </p>
+                    <p>
+                      {{product.Price}}
+                    </p>
+                  </mat-card-content>
+                  <mat-card-actions>
+                    <button mat-button mat-raised-button><mat-icon>favorite</mat-icon></button>
+                    <button mat-button mat-raised-button><mat-icon>shopping_cart</mat-icon></button>
+                  </mat-card-actions>
+                </mat-card>
+          </div>
+        </div>
+        <div class="text-center pt-4 pb-4">
+            <button mat-button mat-raised-button color="primary">View More</button>
+          </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
