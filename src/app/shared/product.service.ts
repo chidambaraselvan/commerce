@@ -10,10 +10,18 @@ export class ProductService {
   public productData = new BehaviorSubject(this.getProducts());
   currentData = this.productData.asObservable();
 
+  cartData:any[] = []
+  cartSubject = new BehaviorSubject(this.cartData);
+  currentCartSubject = this.cartSubject.asObservable();
+
   constructor(public http:HttpClient) { }
 
   changeData(data:any){
     this.productData.next(data)
+  }
+
+  changeCartSubjectData(data:any){
+    this.cartSubject.next(data);
   }
 
   getProducts(){

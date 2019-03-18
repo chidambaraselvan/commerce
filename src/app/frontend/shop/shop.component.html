@@ -2,7 +2,7 @@
 <section class="product">
   <div class="container">
     <div class="row">
-      <div class="col-12 mat-elevation-z1">
+      <div class="col-12 mat-elevation-z1 product-col">
         <div class="product-heading">
           <h1 class="font">Products</h1>
         </div>
@@ -10,24 +10,25 @@
           <div class="h-100" *ngFor="let product of products | slice:0:4; let i=index">
               <mat-card class="product-card text-center h-100">
                   
-                  <img mat-card-image src={{product.Image}} alt="Photo of a Shiba Inu">
+                  <img mat-card-image src={{product.Image}} alt="Product">
                   <mat-card-content>
-                    <p>
+                    <p class="font">
                       {{product.Name}}
                     </p>
-                    <p>
-                      {{product.Price}}
+                    <p class="font">
+                      {{product.Price}} INR
                     </p>
                   </mat-card-content>
                   <mat-card-actions>
                     <button mat-button mat-raised-button><mat-icon>favorite</mat-icon></button>
-                    <button mat-button mat-raised-button><mat-icon>shopping_cart</mat-icon></button>
+                    <button *ngIf="cartProducts.indexOf(product.ProductId)<0" mat-button mat-raised-button color="accent" (click)="addToCart(product)"><mat-icon>add_shopping_cart</mat-icon></button>
+                    <button *ngIf="cartProducts.indexOf(product.ProductId)>-1" mat-button mat-raised-button color="accent" (click)="removeFromCart(product)"><mat-icon>remove_shopping_cart</mat-icon></button>
                   </mat-card-actions>
                 </mat-card>
           </div>
         </div>
         <div class="text-center pt-4 pb-4">
-            <button mat-button mat-raised-button color="primary">View More</button>
+            <button mat-button mat-raised-button color="primary" class="font">View More</button>
           </div>
       </div>
     </div>

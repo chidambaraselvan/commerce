@@ -1,5 +1,8 @@
 .product {
   padding: 35px 0;
+  .product-col{
+    padding: 0 25px;
+  }
   .product-heading {
     text-align: center;
     h1 {
@@ -17,6 +20,10 @@
       }
       .mat-card-image:first-child {
         margin-top: 0;
+      }
+      .mat-card-content>:first-child{
+        color: #3F51B5;
+        font-weight: 600;
       }
     }
   }
