@@ -7,10 +7,11 @@ import { AuthguardService as authGuard } from './shared/guards/authguard.service
 import { ProductComponent } from './backend/product/product.component';
 import { UserComponent } from './backend/user/user.component';
 import { ShopComponent } from './frontend/shop/shop.component';
+import { CartComponent } from './frontend/cart/cart.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: HomeComponent,
     canActivate: [authGuard],
     data: {
@@ -33,7 +34,8 @@ const routes: Routes = [
       allowedRoles: ['Admin']
     }
   },
-  { path: 'shop', component: ShopComponent }
+  { path: '', component: ShopComponent },
+  { path: 'cart', component: CartComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,91 @@
+<div *ngIf="data.length == 0" class="cart-grid-container" [ngStyle]="{'height':height}">
+  <h1 class="font">No items in Cart</h1>
+</div>
+<div *ngIf="data.length > 0" class="container" [ngStyle]="{'height':height}">
+  <div class="row">
+    <div class="col-12" style="padding-top:15px;">
+
+      <!-- <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field> -->
+      <div class="text-center">
+        <h2 class="font">CART</h2>
+      </div>
+      <div class="mat-elevation-z1">
+        <div class="text-right" style="background-color:#fff;padding: 15px 15px;">
+          <button mat-mini-fab color="accent" (click)="dialogOpen()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <table mat-table matSort [dataSource]='dataSource' class="cart-table">
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <!-- Image Column -->
+          <ng-container matColumnDef="Item">
+            <th mat-header-cell *matHeaderCellDef class="font"> Item </th>
+            <td mat-cell *matCellDef="let product" class="font"> <img src={{product.Image}} class="img-fluid"
+                style="width:20px;height:auto;"> </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef class="font"> Name </th>
+            <td mat-cell *matCellDef="let product" class="font"> {{product.Name}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <!--Date Column-->
+          <ng-container matColumnDef="Count">
+            <th mat-header-cell *matHeaderCellDef class="font"> Count </th>
+            <td mat-cell *matCellDef="let product;let i=index" class="font">
+              <button mat-raised-button (click)="countDecrement(i)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <input type="text" name="count" id="count" [(ngModel)]="product.Count" (change)="countChange()"
+                style="width: 30px;text-align: center;border: 0;">
+              <button color="primary" mat-raised-button (click)="countIncrement(i)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </td>
+            <td mat-footer-cell *matFooterCellDef class="font"><br /> Total <br /><br /> Tax<br /><br /> </td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef class="font"> Price </th>
+            <td mat-cell *matCellDef="let product;let i= index;" class="font"> {{product.Count*product.Price}} </td>
+            <td mat-footer-cell *matFooterCellDef class="font"><br /> {{calculation()}} <br /><br /> 6%<br /><br />
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let product;let i = index">
+              <mat-icon mat-list-icon style="cursor:pointer;" (click)="productService.removeFromCart(product)">delete</mat-icon>
+            </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" [ngClass]="header"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

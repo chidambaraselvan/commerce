@@ -10,9 +10,13 @@ export class ProductService {
   public productData = new BehaviorSubject(this.getProducts());
   currentData = this.productData.asObservable();
 
-  cartData:any[] = []
+  cartData:any[] = JSON.parse(sessionStorage.getItem('cart'))!= null?JSON.parse(sessionStorage.getItem('cart')) : [];
   cartSubject = new BehaviorSubject(this.cartData);
   currentCartSubject = this.cartSubject.asObservable();
+
+  wishListData:any[] = JSON.parse(sessionStorage.getItem('wishlist'))!= null?JSON.parse(sessionStorage.getItem('wishlist')) : [];
+  wishListSubject = new BehaviorSubject(this.wishListData);
+  currentwishListSubject = this.wishListSubject.asObservable();
 
   constructor(public http:HttpClient) { }
 
@@ -21,7 +25,13 @@ export class ProductService {
   }
 
   changeCartSubjectData(data:any){
+    sessionStorage.setItem('cart',JSON.stringify(data))
     this.cartSubject.next(data);
+  }
+
+  changewishListSubjectData(data:any){
+    sessionStorage.setItem('wishlist',JSON.stringify(data))
+    this.wishListSubject.next(data);
   }
 
   getProducts(){
@@ -54,5 +64,30 @@ export class ProductService {
 
   deleteProduct(id:number){
     return this.http.delete('http://localhost:52253/api/Product/'+id)
+  }
+
+  addToCart(product: any) {
+    product.Count = 1;
+    this.cartData.push(product);
+    this.changeCartSubjectData(this.cartData);
+  }
+
+  removeFromCart(product: any) {
+    const index = this.cartData.findIndex((x)=>x.ProductId == product.ProductId)
+    this.cartData.splice(index,1);
+    this.changeCartSubjectData(this.cartData);
+  }
+
+  
+  addToWishList(product: any) {
+    product.Count = 1;
+    this.wishListData.push(product);
+    this.changewishListSubjectData(this.wishListData);
+  }
+
+  removeFromWishList(product: any) {
+    const index = this.wishListData.findIndex((x)=>x.ProductId == product.ProductId)
+    this.wishListData.splice(index,1);
+    this.changewishListSubjectData(this.wishListData);
   }
 }

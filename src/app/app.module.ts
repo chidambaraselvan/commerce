@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule,MatMenuModule,MatButtonModule,MatCardModule, MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatBadgeModule,MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule,MatMenuModule,MatButtonModule,MatCardModule, MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatBadgeModule,MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule, MatSelectModule, MatTooltipModule, MatGridListModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './backend/header/header.component';
@@ -21,6 +21,7 @@ import { UserEditComponent } from './backend/user/user-edit/user-edit.component'
 import { UserAddComponent } from './backend/user/user-add/user-add.component';
 import { ShopComponent } from './frontend/shop/shop.component';
 import { SliderComponent } from './frontend/shop/slider/slider.component';
+import { CartComponent } from './frontend/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SliderComponent } from './frontend/shop/slider/slider.component';
     UserEditComponent,
     UserAddComponent,
     ShopComponent,
-    SliderComponent
+    SliderComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,9 @@ import { SliderComponent } from './frontend/shop/slider/slider.component';
     MatDialogModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule,
+    MatGridListModule
   ],
   entryComponents: [
     ProductdialogComponent

@@ -89,9 +89,8 @@ export class ProductdialogComponent implements OnInit {
         }
       })
     } else {
-      this.image = this.image != "" ? this.image : this.data.product.Image
+      this.image = (this.image != undefined) ? this.image : this.data.product.Image
       this.product.putProduct(this.addProductForm.value, this.image, this.data.product.DateCreated, this.data.product.ProductId).subscribe((data: any) => {
-        console.log(data);
         if (data != "") {
           let snackBarRef = this.snackBar.open("Product Updated Successfully");
           snackBarRef.afterDismissed().subscribe(() => {

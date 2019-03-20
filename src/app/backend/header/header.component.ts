@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
   name:string
   show:boolean
   count:number
+  wishListCount:number
+
   @Output() messageEvent = new EventEmitter<string>();
   constructor(public data:DataService,public productService:ProductService) { }
 
@@ -27,6 +29,9 @@ export class HeaderComponent implements OnInit {
     })
     this.productService.cartSubject.subscribe(()=>{
       this.count = this.productService.cartData.length
+    })
+    this.productService.wishListSubject.subscribe(()=>{
+      this.wishListCount = this.productService.wishListData.length
     })
   }
 

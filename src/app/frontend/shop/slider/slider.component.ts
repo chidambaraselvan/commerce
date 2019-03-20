@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Renderer2, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Renderer2, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit,AfterViewInit {
+export class SliderComponent implements OnInit,AfterViewInit,OnDestroy {
   images = [
     {
       src: "../../../assets/slide1.jpeg"
@@ -147,4 +147,8 @@ export class SliderComponent implements OnInit,AfterViewInit {
       window.webkitCancelAnimationFrame ? window.webkitCancelAnimationFrame(handle.value) :
         clearInterval(handle);
   };
+
+  ngOnDestroy(){
+    this.clearRequestInterval(this.Interval);
+  }
 }

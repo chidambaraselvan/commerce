@@ -20,9 +20,10 @@
                     </p>
                   </mat-card-content>
                   <mat-card-actions>
-                    <button mat-button mat-raised-button><mat-icon>favorite</mat-icon></button>
-                    <button *ngIf="cartProducts.indexOf(product.ProductId)<0" mat-button mat-raised-button color="accent" (click)="addToCart(product)"><mat-icon>add_shopping_cart</mat-icon></button>
-                    <button *ngIf="cartProducts.indexOf(product.ProductId)>-1" mat-button mat-raised-button color="accent" (click)="removeFromCart(product)"><mat-icon>remove_shopping_cart</mat-icon></button>
+                    <button *ngIf="wishListProducts.indexOf(product.ProductId)<0" mat-button mat-raised-button matTooltip="Add to Favourites" matTooltipPosition="left" (click)="productService.addToWishList(product)"><mat-icon>favorite_border</mat-icon></button>
+                    <button *ngIf="wishListProducts.indexOf(product.ProductId)>-1" mat-button mat-raised-button matTooltip="Remove from Favourites" matTooltipPosition="left" (click)="productService.removeFromWishList(product)"><mat-icon>favorite</mat-icon></button>
+                    <button *ngIf="cartProducts.indexOf(product.ProductId)<0" mat-button mat-raised-button matTooltip="Add to Cart" matTooltipPosition="right" color="accent" (click)="productService.addToCart(product)"><mat-icon>add_shopping_cart</mat-icon></button>
+                    <button *ngIf="cartProducts.indexOf(product.ProductId)>-1" mat-button mat-raised-button matTooltip="Remove from Cart" matTooltipPosition="right" color="accent" (click)="productService.removeFromCart(product)"><mat-icon>remove_shopping_cart</mat-icon></button>
                   </mat-card-actions>
                 </mat-card>
           </div>
